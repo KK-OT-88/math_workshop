@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="กล่องของขวัญ">
+  <rect x="10" y="24" width="44" height="32" rx="5" fill="#B71C1C"/>
+  <rect x="8" y="18" width="48" height="10" rx="3" fill="#D32F2F"/>
+  <rect x="28" y="18" width="8" height="38" fill="#F9A825"/>
+  <rect x="10" y="34" width="44" height="7" fill="#F9A825" opacity="0.9"/>
+  <path d="M32 18 C22 6 14 14 24 18 Z" fill="#FDD835" stroke="#F57F17" stroke-width="1.8"/>
+  <path d="M32 18 C42 6 50 14 40 18 Z" fill="#FDD835" stroke="#F57F17" stroke-width="1.8"/>
+  <circle cx="32" cy="18" r="3.5" fill="#F57F17"/>
+</svg>

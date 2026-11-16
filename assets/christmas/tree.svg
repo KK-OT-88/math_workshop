@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ต้นคริสต์มาส">
+  <rect x="27" y="48" width="10" height="11" rx="2" fill="#6D4C41"/>
+  <polygon points="32,12 14,32 50,32" fill="#2E7D32"/>
+  <polygon points="32,22 11,42 53,42" fill="#1B5E20"/>
+  <polygon points="32,31 8,51 56,51" fill="#2E7D32"/>
+  <path d="M32 3 L34.5 8.5 L40.5 9 L36 13 L37.2 19 L32 16 L26.8 19 L28 13 L23.5 9 L29.5 8.5 Z" fill="#F9A825"/>
+  <circle cx="26" cy="28" r="2.8" fill="#D32F2F"/>
+  <circle cx="38" cy="36" r="2.8" fill="#F9A825"/>
+  <circle cx="22" cy="44" r="2.8" fill="#FFF8EE"/>
+  <circle cx="42" cy="46" r="2.8" fill="#D32F2F"/>
+</svg>

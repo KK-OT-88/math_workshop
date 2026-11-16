@@ -1,5 +1,6 @@
 (function () {
   let audioCtx = null;
+  let masterGain = null;
   let isPlaying = false;
   let nextNoteTime = 0.0;
   let noteIdx = 0;
@@ -29,7 +30,15 @@
 
   function initAudio() {
     if (audioCtx) return;
+    if ('audioSession' in navigator && navigator.audioSession.type !== 'playback') {
+      try {
+        navigator.audioSession.type = 'playback';
+      } catch (_) {}
+    }
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.setValueAtTime(1.0, audioCtx.currentTime);
+    masterGain.connect(audioCtx.destination);
   }
 
   function playNote(freq, startTime, duration) {
@@ -47,7 +56,7 @@
     gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration - 0.02);
     
     osc.connect(gain);
-    gain.connect(audioCtx.destination);
+    gain.connect(masterGain || audioCtx.destination);
     
     osc.onended = () => {
       osc.disconnect();
@@ -142,6 +151,26 @@
       updateButtonUI(btn);
     });
   }
+
+  window.duckBGM = function () {
+    if (masterGain && audioCtx) {
+      masterGain.gain.setTargetAtTime(0.25, audioCtx.currentTime, 0.05);
+    }
+  };
+
+  window.unduckBGM = function () {
+    if (masterGain && audioCtx) {
+      masterGain.gain.setTargetAtTime(1.0, audioCtx.currentTime, 0.15);
+    }
+  };
+
+  window.getSharedAudioContext = function () {
+    initAudio();
+    if (audioCtx && audioCtx.state === 'suspended' && typeof audioCtx.resume === 'function') {
+      audioCtx.resume().catch(() => {});
+    }
+    return audioCtx;
+  };
 
   // Load widget once DOM is loaded
   if (document.readyState === 'loading') {

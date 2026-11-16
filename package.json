@@ -1,4 +1,12 @@
 {
+  "name": "math_workshop_p1",
+  "version": "2.1.0",
+  "description": "Grade 1 Math Workshop (Christmas Edition + Hybrid Thai TTS)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js"
+  },
   "dependencies": {
     "@modelcontextprotocol/server-gdrive": "^2025.1.14"
   }

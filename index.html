@@ -3,85 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>คณิตศาสตร์ตัวจิ๋ว (Mini-Math Dashboard)</title>
+  <title>คณิตศาสตร์ ป.1 แสนสนุก (Christmas Edition)</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .card {
-      background: #E3F2FD;
-      border: 4px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      text-align: center;
-    }
-    .card.subtraction {
-      background: #FFF3E0;
-      border-color: #FFB74D;
-    }
-    .card-title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-top: 0;
-      margin-bottom: 20px;
-      color: var(--primary);
-    }
-    .card.subtraction .card-title {
-      color: #E65100;
-    }
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .btn-static {
-      background-color: #37474F;
-    }
-    .btn-sub-interactive {
-      background-color: #D84315;
-    }
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      .container {
-        min-height: auto;
-      }
-    }
-  </style>
 </head>
 <body>
-  <main class="container">
+  <main class="container candy-border">
     <header class="header">
-      <h1 class="title">คณิตศาสตร์ตัวจิ๋วสำหรับคนเก่ง</h1>
-      <p style="font-size: 1.25rem; margin: 10px 0;">เลือกบทเรียนเพื่อเริ่มสนุกกันเลย!</p>
+      <div class="header-ornaments">
+        <img src="assets/christmas/tree.svg" alt="ต้นคริสต์มาส">
+        <img src="assets/christmas/santa.svg" alt="ซานตาคลอส">
+        <img src="assets/christmas/snowman.svg" alt="ตุ๊กตาหิมะ">
+      </div>
+      <h1 class="title">🎄 คณิตศาสตร์ ป.1 แสนสนุก (Christmas Edition) 🎅</h1>
+      <p class="subtitle">เลือกบทเรียนคริสต์มาสเพื่อเริ่มเล่นบนหน้าจอหรือฝึกเขียนด้วยปากกากันเลย!</p>
+      <div style="margin-top: 12px;">
+        <button type="button" class="tts-inline-btn" id="btn-home-greet">🔊 ฟังเสียงต้อนรับ</button>
+      </div>
     </header>
-    
-    <section class="grid">
-      <!-- Card: Addition -->
-      <article class="card">
-        <h2 class="card-title">➕ การบวกเลข</h2>
+
+    <section class="dashboard-grid" aria-label="บทเรียนคณิตศาสตร์ ป.1">
+      <article class="topic-card theme-red">
+        <div>
+          <img class="card-icon" src="assets/christmas/star.svg" alt="จำนวนนับ 21 ถึง 100">
+          <h2 class="card-title">⭐ ตอนที่ 1: จำนวนนับ 21–100</h2>
+          <p class="card-desc">หลักสิบ หลักหน่วย รูปกระจาย เปรียบเทียบ และแบบรูป</p>
+        </div>
         <nav class="btn-group">
-          <a href="worksheet_add_interactive.html" class="btn">🎮 เล่นบนหน้าจอ</a>
-          <a href="worksheet_add_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
+          <a href="worksheet_numbers_interactive.html" class="btn">🎮 เล่นบนหน้าจอ</a>
+          <a href="worksheet_numbers_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
         </nav>
       </article>
-      
-      <!-- Card: Subtraction -->
-      <article class="card subtraction">
-        <h2 class="card-title">➖ การลบเลข</h2>
+
+      <article class="topic-card theme-green">
+        <div>
+          <img class="card-icon" src="assets/christmas/gift.svg" alt="แผนภูมิรูปภาพ">
+          <h2 class="card-title">🎁 ตอนที่ 2: แผนภูมิรูปภาพ</h2>
+          <p class="card-desc">อ่านข้อมูลจากภาพของขวัญคริสต์มาสและตอบคำถาม</p>
+        </div>
         <nav class="btn-group">
-          <a href="worksheet_sub_interactive.html" class="btn btn-sub-interactive">🎮 เล่นบนหน้าจอ</a>
-          <a href="worksheet_sub_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
+          <a href="worksheet_pictograph_interactive.html" class="btn btn-green">🎮 เล่นบนหน้าจอ</a>
+          <a href="worksheet_pictograph_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
+        </nav>
+      </article>
+
+      <article class="topic-card theme-gold">
+        <div>
+          <img class="card-icon" src="assets/christmas/bell.svg" alt="สูตรคูณ แม่ 2 และ แม่ 3">
+          <h2 class="card-title">🔔 ตอนที่ 3: สูตรคูณ แม่ 2 และ 3</h2>
+          <p class="card-desc">สนุกกับสูตรคูณแม่ 2 และแม่ 3 พร้อมภาพกลุ่มช่วยนับ</p>
+        </div>
+        <nav class="btn-group">
+          <a href="worksheet_multiply_interactive.html" class="btn btn-gold">🎮 เล่นบนหน้าจอ</a>
+          <a href="worksheet_multiply_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
+        </nav>
+      </article>
+
+      <article class="topic-card theme-pine">
+        <div>
+          <img class="card-icon" src="assets/christmas/santa.svg" alt="โจทย์ปัญหา บวก-ลบ ไม่เกิน 100">
+          <h2 class="card-title">🎅 ตอนที่ 4: โจทย์ปัญหา บวก-ลบ ≤ 100</h2>
+          <p class="card-desc">วิเคราะห์โจทย์ปัญหาและฝึกเขียนประโยคสัญลักษณ์</p>
+        </div>
+        <nav class="btn-group">
+          <a href="worksheet_wordproblem_interactive.html" class="btn btn-green">🎮 เล่นบนหน้าจอ</a>
+          <a href="worksheet_wordproblem_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
         </nav>
       </article>
     </section>
+
+    <section class="full-worksheet-banner" aria-label="ใบงานรวม ป.1">
+      <div>
+        <h2>📄 ใบงานรวม ป.1 ครบทั้ง 4 ตอน (26 คะแนน)</h2>
+        <p>รวมเนื้อหาทั้งหมดไว้ในหน้าเดียว สำหรับทำแบบฝึกหัดต่อเนื่อง ตรวจคะแนนรวม และพิมพ์ A4</p>
+      </div>
+      <a href="worksheet_p1_full_static.html" class="btn">เปิดใบงานรวม ป.1 ➡️</a>
+    </section>
   </main>
+
+  <script src="js/tts.js"></script>
+  <script src="js/christmas-fx.js"></script>
   <script src="bgm.js"></script>
+  <script>
+    document.getElementById('btn-home-greet').addEventListener('click', function () {
+      if (typeof window.playThaiTTS === 'function') {
+        window.playThaiTTS('สวัสดีค่ะ, ยินดีต้อนรับสู่คณิตศาสตร์ ปอ 1 ธีมคริสต์มาส, เลือกบทเรียนที่ต้องการได้เลยนะจ๊ะ');
+      }
+    });
+  </script>
 </body>
 </html>

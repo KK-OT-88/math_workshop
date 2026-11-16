@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="กระดิ่งทอง">
+  <circle cx="32" cy="10" r="4" fill="#1B5E20"/>
+  <path d="M32 14 C20 14 15 26 14 40 L9 48 L55 48 L50 40 C49 26 44 14 32 14 Z" fill="#F9A825" stroke="#E65100" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M24 20 C21 24 20 32 19 39" fill="none" stroke="#FFF9C4" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="32" cy="52" r="5" fill="#B71C1C"/>
+  <path d="M24 14 C20 9 14 12 20 16 Z" fill="#D32F2F"/>
+  <path d="M40 14 C44 9 50 12 44 16 Z" fill="#D32F2F"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="กวางเรนเดียร์">
+  <path d="M22 18 L14 7 M18 13 L12 14 M19 10 L21 5" stroke="#6D4C41" stroke-width="3" stroke-linecap="round"/>
+  <path d="M42 18 L50 7 M46 13 L52 14 M45 10 L43 5" stroke="#6D4C41" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="18" cy="24" rx="6" ry="3.5" transform="rotate(-25 18 24)" fill="#8D6E63"/>
+  <ellipse cx="46" cy="24" rx="6" ry="3.5" transform="rotate(25 46 24)" fill="#8D6E63"/>
+  <circle cx="32" cy="34" r="16" fill="#A1887F"/>
+  <ellipse cx="32" cy="41" rx="11" ry="8" fill="#D7CCC8"/>
+  <circle cx="26" cy="31" r="2.3" fill="#212121"/>
+  <circle cx="38" cy="31" r="2.3" fill="#212121"/>
+  <circle cx="32" cy="39" r="4.5" fill="#D32F2F"/>
+  <circle cx="30.5" cy="37.5" r="1.2" fill="#FFCDD2"/>
+</svg>

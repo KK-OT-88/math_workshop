@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ซานตาคลอส">
+  <circle cx="32" cy="34" r="17" fill="#FFCCBC"/>
+  <path d="M16 25 C18 10 38 7 49 18 L48 25 Z" fill="#B71C1C"/>
+  <circle cx="51" cy="20" r="4.5" fill="#FFFFFF"/>
+  <rect x="14" y="22" width="36" height="7" rx="3.5" fill="#FFFFFF"/>
+  <path d="M15 36 C15 52 22 57 32 57 C42 57 49 52 49 36 C43 40 37 39 32 39 C27 39 21 40 15 36 Z" fill="#FFFFFF"/>
+  <circle cx="26" cy="32" r="2.2" fill="#212121"/>
+  <circle cx="38" cy="32" r="2.2" fill="#212121"/>
+  <circle cx="32" cy="36" r="3" fill="#E53935"/>
+  <path d="M27 43 Q32 46 37 43" fill="none" stroke="#B71C1C" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ดาวคริสต์มาส">
+  <path d="M32 4 L40 22 L59 24 L45 37 L49 56 L32 47 L15 56 L19 37 L5 24 L24 22 Z" fill="#F9A825" stroke="#B71C1C" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M32 11 L37 23 L50 25 L41 34 L43 47 L32 41 Z" fill="#FDD835" opacity="0.6"/>
+  <circle cx="26" cy="30" r="2.2" fill="#4A2E2B"/>
+  <circle cx="38" cy="30" r="2.2" fill="#4A2E2B"/>
+  <path d="M28 36 Q32 40 36 36" fill="none" stroke="#4A2E2B" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

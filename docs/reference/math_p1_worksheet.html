@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ใบงานคณิตศาสตร์ ป.1 - ชุดฝึกทักษะรวม</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --secondary: #f59e0b;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background-color: var(--bg);
+      color: #1e293b;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .toolbar {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+    }
+    .toolbar button {
+      font-family: 'Sarabun', sans-serif;
+      font-weight: 600;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+    .toolbar button:hover { opacity: 0.9; }
+    .btn-check { background: var(--success); color: white; }
+    .btn-key { background: var(--secondary); color: white; }
+    .btn-reset { background: #64748b; color: white; }
+    .btn-print { background: var(--primary); color: white; }
+    .btn-dl { background: #8b5cf6; color: white; }
+    .worksheet-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 35px 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 2px solid #e2e8f0;
+    }
+    h1, h2, h3 { font-family: 'Mali', cursive; margin-top: 0; }
+    .header-box {
+      text-align: center;
+      border-bottom: 3px dashed var(--primary);
+      padding-bottom: 18px;
+      margin-bottom: 25px;
+    }
+    .student-info {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 15px;
+      margin-top: 18px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .student-info label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    /* All input boxes centered horizontally and vertically with comfortable padding */
+    input[type="text"] {
+      text-align: center !important;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      height: 38px;
+      line-height: 34px;
+      padding: 4px 12px;
+      vertical-align: middle;
+      transition: all 0.15s ease-in-out;
+    }
+    input[type="text"]::placeholder {
+      text-align: center;
+      font-weight: 400;
+      color: #94a3b8;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+    }
+    .student-info input[type="text"] {
+      flex: 1;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      background-color: #f8fafc;
+    }
+    .section-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 25px;
+      page-break-inside: avoid;
+    }
+    .section-title {
+      background: #eff6ff;
+      color: var(--primary);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 18px;
+      border-left: 5px solid var(--primary);
+      margin-bottom: 16px;
+    }
+    input.ans-input {
+      width: 90px;
+      border: 2px solid #94a3b8;
+      border-radius: 8px;
+      background-color: #ffffff;
+      margin: 2px 4px;
+    }
+    input.ans-input.wide {
+      width: 170px;
+    }
+    input.expr-input {
+      width: 210px;
+      border: 2px dashed #94a3b8;
+      border-radius: 8px;
+      background-color: #f8fafc;
+      margin: 4px 6px;
+    }
+    input.ans-input.correct {
+      border-color: var(--success);
+      background-color: #dcfce7;
+      color: #166534;
+    }
+    input.ans-input.wrong {
+      border-color: var(--danger);
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+    .answer-hint {
+      display: none;
+      color: var(--danger);
+      font-weight: 700;
+      font-size: 14px;
+      margin-left: 6px;
+    }
+    .show-keys .answer-hint {
+      display: inline;
+    }
+    .mult-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 220px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 17px;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .toolbar { display: none !important; }
+      .worksheet-container { box-shadow: none; border: none; padding: 10px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div id="score-banner" style="font-weight:700; font-size:16px;">คะแนนรวม: - / 25</div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button class="btn-check" onclick="checkAnswers()">ตรวจคำตอบ</button>
+      <button class="btn-key" onclick="toggleKeys()">ดูเฉลย / ซ่อนเฉลย</button>
+      <button class="btn-reset" onclick="resetWorksheet()">ล้างข้อมูล</button>
+      <button class="btn-print" onclick="window.print()">พิมพ์ใบงาน (A4)</button>
+      <button class="btn-dl" onclick="downloadHTML()">ดาวน์โหลด .HTML</button>
+    </div>
+  </div>
+
+  <div class="worksheet-container">
+    <div class="header-box">
+      <h1>แบบฝึกหัดพัฒนาทักษะคณิตศาสตร์ ชั้นประถมศึกษาปีที่ 1</h1>
+      <p style="margin:0; color:#475569;">ครอบคลุมเนื้อหา: จำนวนนับ 21-100 | แผนภูมิรูปภาพ | สูตรคูณแม่ 2 และ 3 | โจทย์ปัญหาบวกลบไม่เกิน 100</p>
+      <div class="student-info">
+        <label>ชื่อ-นามสกุล: <input type="text" placeholder="ด.ช. / ด.ญ. ..."></label>
+        <label>ชั้น: <input type="text" value="ป.1/1"></label>
+        <label>เลขที่: <input type="text" placeholder="..."></label>
+      </div>
+    </div>
+
+    <!-- ตอนที่ 1: จำนวนนับ 21 ถึง 100 (6 คะแนน) -->
+    <div class="section-card" id="sec-1">
+      <h2 class="section-title">ตอนที่ 1: จำนวนนับ 21 ถึง 100 (6 คะแนน)</h2>
+      <ol style="line-height: 2.5;">
+        <li>
+          จำนวน <strong>48</strong> มีค่าเท่ากับ <input type="text" class="ans-input" data-answer="4"> สิบ กับ <input type="text" class="ans-input" data-answer="8"> หน่วย
+          <span class="answer-hint">(เฉลย: 4 สิบ กับ 8 หน่วย)</span>
+        </li>
+        <li>
+          เขียนในรูปกระจาย: <strong>75</strong> = <input type="text" class="ans-input" data-answer="70"> + <input type="text" class="ans-input" data-answer="5">
+          <span class="answer-hint">(เฉลย: 70 + 5)</span>
+        </li>
+        <li>
+          คำอ่าน <strong>"เก้าสิบสาม"</strong> เขียนเป็นตัวเลขฮินดูอารบิกได้คือ <input type="text" class="ans-input" data-answer="93">
+          <span class="answer-hint">(เฉลย: 93)</span>
+        </li>
+        <li>
+          เปรียบเทียบจำนวน (เติมเครื่องหมาย <code>&gt;</code>, <code>&lt;</code> หรือ <code>=</code>): <strong>64</strong> <input type="text" class="ans-input" data-answer="<"> <strong>81</strong>
+          <span class="answer-hint">(เฉลย: &lt;)</span>
+        </li>
+        <li>
+          เติมตัวเลขที่หายไปในแบบรูป: 32, 42, 52, <input type="text" class="ans-input" data-answer="62">, 72
+          <span class="answer-hint">(เฉลย: 62)</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- ตอนที่ 2: แผนภูมิรูปภาพ (4 คะแนน) -->
+    <div class="section-card" id="sec-2">
+      <h2 class="section-title">ตอนที่ 2: แผนภูมิรูปภาพ (4 คะแนน)</h2>
+      <p style="margin-top:0;"><strong>พิจารณารูปภาพแสดงจำนวนผลไม้ที่ใบบัวเก็บได้ แล้วตอบคำถาม</strong> (กำหนดให้ รูปผลไม้ 1 รูป แทนจำนวนผลไม้ 1 ผล)</p>
+      <table style="width:100%; border-collapse:collapse; margin-bottom:15px; background:#f8fafc;">
+        <tr style="border:1px solid #cbd5e1;">
+          <td style="padding:10px 14px; font-weight:700; width:150px; border-right:1px solid #cbd5e1;">🍎 แอปเปิล</td>
+          <td style="padding:10px 14px; font-size:24px; letter-spacing:8px;">🍎 🍎 🍎 🍎 🍎 🍎 🍎</td>
+        </tr>
+        <tr style="border:1px solid #cbd5e1;">
+          <td style="padding:10px 14px; font-weight:700; border-right:1px solid #cbd5e1;">🍊 ส้ม</td>
+          <td style="padding:10px 14px; font-size:24px; letter-spacing:8px;">🍊 🍊 🍊 🍊 🍊</td>
+        </tr>
+        <tr style="border:1px solid #cbd5e1;">
+          <td style="padding:10px 14px; font-weight:700; border-right:1px solid #cbd5e1;">🍉 แตงโม</td>
+          <td style="padding:10px 14px; font-size:24px; letter-spacing:8px;">🍉 🍉 🍉</td>
+        </tr>
+        <tr style="border:1px solid #cbd5e1;">
+          <td style="padding:10px 14px; font-weight:700; border-right:1px solid #cbd5e1;">🍌 กล้วย</td>
+          <td style="padding:10px 14px; font-size:24px; letter-spacing:8px;">🍌 🍌 🍌 🍌 🍌 🍌 🍌 🍌 🍌</td>
+        </tr>
+      </table>
+      <ol style="line-height: 2.5;">
+        <li>ใบบัวเก็บ <strong>แอปเปิล</strong> ได้ทั้งหมด <input type="text" class="ans-input" data-answer="7"> ผล <span class="answer-hint">(เฉลย: 7)</span></li>
+        <li>ผลไม้ที่ใบบัวเก็บได้ <strong>มากที่สุด</strong> คือ <input type="text" class="ans-input wide" data-answer="กล้วย"> <span class="answer-hint">(เฉลย: กล้วย)</span></li>
+        <li>ใบบัวเก็บ <strong>ส้ม</strong> ได้มากกว่า <strong>แตงโม</strong> อยู่ <input type="text" class="ans-input" data-answer="2"> ผล <span class="answer-hint">(เฉลย: 2)</span></li>
+        <li>รวมทั้งหมดใบบัวเก็บผลไม้ได้ <input type="text" class="ans-input" data-answer="24"> ผล <span class="answer-hint">(เฉลย: 24)</span></li>
+      </ol>
+    </div>
+
+    <!-- ตอนที่ 3: สูตรคูณ แม่ 2 และ แม่ 3 (10 คะแนน) -->
+    <div class="section-card" id="sec-3">
+      <h2 class="section-title">ตอนที่ 3: สนุกกับสูตรคูณ แม่ 2 และ แม่ 3 (10 คะแนน)</h2>
+      <p style="margin-top:0;">เติมผลลัพธ์ของการคูณลงในช่องว่างให้ถูกต้อง</p>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="background:#f0fdf4; padding:18px; border-radius:10px; border:1px solid #bbf7d0;">
+          <h3 style="margin-top:0; color:#166534;">✖️ สูตรคูณ แม่ 2</h3>
+          <div style="line-height:2.5;">
+            1) 2 × 2 = <input type="text" class="ans-input" data-answer="4"> <span class="answer-hint">(4)</span><br>
+            2) 2 × 4 = <input type="text" class="ans-input" data-answer="8"> <span class="answer-hint">(8)</span><br>
+            3) 2 × 6 = <input type="text" class="ans-input" data-answer="12"> <span class="answer-hint">(12)</span><br>
+            4) 2 × 8 = <input type="text" class="ans-input" data-answer="16"> <span class="answer-hint">(16)</span><br>
+            5) 2 × 9 = <input type="text" class="ans-input" data-answer="18"> <span class="answer-hint">(18)</span>
+          </div>
+        </div>
+        <div style="background:#fffbeb; padding:18px; border-radius:10px; border:1px solid #fde68a;">
+          <h3 style="margin-top:0; color:#92400e;">✖️ สูตรคูณ แม่ 3</h3>
+          <div style="line-height:2.5;">
+            6) 3 × 2 = <input type="text" class="ans-input" data-answer="6"> <span class="answer-hint">(6)</span><br>
+            7) 3 × 3 = <input type="text" class="ans-input" data-answer="9"> <span class="answer-hint">(9)</span><br>
+            8) 3 × 5 = <input type="text" class="ans-input" data-answer="15"> <span class="answer-hint">(15)</span><br>
+            9) 3 × 7 = <input type="text" class="ans-input" data-answer="21"> <span class="answer-hint">(21)</span><br>
+            10) 3 × 9 = <input type="text" class="ans-input" data-answer="27"> <span class="answer-hint">(27)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ตอนที่ 4: โจทย์ปัญหาการบวก และโจทย์ปัญหาการลบ ไม่เกิน 100 (5 คะแนน) -->
+    <div class="section-card" id="sec-4">
+      <h2 class="section-title">ตอนที่ 4: โจทย์ปัญหาการบวกและการลบ ไม่เกิน 100 (5 คะแนน)</h2>
+      <ol style="line-height: 2.3;">
+        <li style="margin-bottom:14px;">
+          มีนะอ่านหนังสือวันแรกได้ <strong>24</strong> หน้า วันที่สองอ่านได้อีก <strong>15</strong> หน้า รวมสองวันมีนะอ่านหนังสือได้กี่หน้า?<br>
+          ประโยคสัญลักษณ์: <input type="text" class="expr-input" placeholder="เช่น 24 + 15 = □"> |
+          <strong>ตอบ:</strong> <input type="text" class="ans-input" data-answer="39"> หน้า <span class="answer-hint">(เฉลย: 39)</span>
+        </li>
+        <li style="margin-bottom:14px;">
+          คุณแม่มีไข่ไก่ <strong>58</strong> ฟอง นำไปทำขนม <strong>23</strong> ฟอง คุณแม่เหลือไข่ไก่กี่ฟอง?<br>
+          ประโยคสัญลักษณ์: <input type="text" class="expr-input" placeholder="เขียนประโยคสัญลักษณ์"> |
+          <strong>ตอบ:</strong> <input type="text" class="ans-input" data-answer="35"> ฟอง <span class="answer-hint">(เฉลย: 35)</span>
+        </li>
+        <li style="margin-bottom:14px;">
+          ในตะกร้ามีลูกบอลสีแดง <strong>36</strong> ลูก และลูกบอลสีฟ้า <strong>42</strong> ลูก มีลูกบอลทั้งหมดกี่ลูก?<br>
+          ประโยคสัญลักษณ์: <input type="text" class="expr-input" placeholder="เขียนประโยคสัญลักษณ์"> |
+          <strong>ตอบ:</strong> <input type="text" class="ans-input" data-answer="78"> ลูก <span class="answer-hint">(เฉลย: 78)</span>
+        </li>
+        <li style="margin-bottom:14px;">
+          ร้านค้ามีดินสอ <strong>89</strong> แท่ง ขายไป <strong>45</strong> แท่ง ร้านค้าเหลือดินสอกี่แท่ง?<br>
+          ประโยคสัญลักษณ์: <input type="text" class="expr-input" placeholder="เขียนประโยคสัญลักษณ์"> |
+          <strong>ตอบ:</strong> <input type="text" class="ans-input" data-answer="44"> แท่ง <span class="answer-hint">(เฉลย: 44)</span>
+        </li>
+        <li style="margin-bottom:14px;">
+          พ่อปลูกต้นไม้ไว้ <strong>50</strong> ต้น วันนี้ปลูกเพิ่มอีก <strong>30</strong> ต้น พ่อมีต้นไม้ทั้งหมดกี่ต้น?<br>
+          ประโยคสัญลักษณ์: <input type="text" class="expr-input" placeholder="เขียนประโยคสัญลักษณ์"> |
+          <strong>ตอบ:</strong> <input type="text" class="ans-input" data-answer="80"> ต้น <span class="answer-hint">(เฉลย: 80)</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const inputs = document.querySelectorAll('input.ans-input');
+      let score = 0;
+      inputs.forEach(input => {
+        const expected = input.getAttribute('data-answer').trim();
+        const actual = input.value.trim();
+        input.classList.remove('correct', 'wrong');
+        if (actual === expected) {
+          input.classList.add('correct');
+          score++;
+        } else {
+          input.classList.add('wrong');
+        }
+      });
+      document.getElementById('score-banner').textContent = `คะแนนรวม: ${score} / ${inputs.length}`;
+    }
+
+    function toggleKeys() {
+      document.querySelector('.worksheet-container').classList.toggle('show-keys');
+    }
+
+    function resetWorksheet() {
+      document.querySelectorAll('input.ans-input, input.expr-input').forEach(input => {
+        input.value = '';
+        input.classList.remove('correct', 'wrong');
+      });
+      document.querySelector('.worksheet-container').classList.remove('show-keys');
+      document.getElementById('score-banner').textContent = 'คะแนนรวม: - / 25';
+    }
+
+    function downloadHTML() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'math_p1_worksheet.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
