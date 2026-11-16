@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #1565C0;
+  --secondary: #1976D2;
+  --success: #4CAF50;
+  --bg: #FAFCFF;
+  --card-bg: #FFFFFF;
+  --text: #212121;
+  --border: #90CAF9;
+  --accent-yellow: #FFFDE7;
+  --font-family: Arial, "Noto Sans Thai", sans-serif;
+  --radius: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background-color: var(--bg);
+  font-family: var(--font-family);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px;
+  min-height: 650px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.title {
+  font-size: 2.625rem;
+  color: var(--primary);
+  margin: 10px 0;
+}
+
+.btn {
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.celebration {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.celebration.show {
+  display: flex;
+}
+
+/* BGM Toggle Widget Styles */
+.bgm-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 3px solid #ff80ab;
+  background-color: #fff;
+  color: #ff4081;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 64, 129, 0.2);
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+
+.bgm-toggle:hover {
+  transform: scale(1.05);
+  background-color: #ffe8f0;
+}
+
+.bgm-toggle:active {
+  transform: scale(0.95);
+}
+
+.bgm-toggle.active {
+  background-color: #ff4081;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+}
+
+@media print {
+  .bgm-toggle {
+    display: none !important;
+  }
+}

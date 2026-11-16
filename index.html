@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>คณิตศาสตร์ตัวจิ๋ว (Mini-Math Dashboard)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .card {
+      background: #E3F2FD;
+      border: 4px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      text-align: center;
+    }
+    .card.subtraction {
+      background: #FFF3E0;
+      border-color: #FFB74D;
+    }
+    .card-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .card.subtraction .card-title {
+      color: #E65100;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .btn-static {
+      background-color: #37474F;
+    }
+    .btn-sub-interactive {
+      background-color: #D84315;
+    }
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .container {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1 class="title">คณิตศาสตร์ตัวจิ๋วสำหรับคนเก่ง</h1>
+      <p style="font-size: 1.25rem; margin: 10px 0;">เลือกบทเรียนเพื่อเริ่มสนุกกันเลย!</p>
+    </header>
+    
+    <section class="grid">
+      <!-- Card: Addition -->
+      <article class="card">
+        <h2 class="card-title">➕ การบวกเลข</h2>
+        <nav class="btn-group">
+          <a href="worksheet_add_interactive.html" class="btn">🎮 เล่นบนหน้าจอ</a>
+          <a href="worksheet_add_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
+        </nav>
+      </article>
+      
+      <!-- Card: Subtraction -->
+      <article class="card subtraction">
+        <h2 class="card-title">➖ การลบเลข</h2>
+        <nav class="btn-group">
+          <a href="worksheet_sub_interactive.html" class="btn btn-sub-interactive">🎮 เล่นบนหน้าจอ</a>
+          <a href="worksheet_sub_static.html" class="btn btn-static">✏️ เขียนด้วยปากกา</a>
+        </nav>
+      </article>
+    </section>
+  </main>
+  <script src="bgm.js"></script>
+</body>
+</html>
