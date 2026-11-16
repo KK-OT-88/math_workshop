@@ -1,7 +1,6 @@
 (function () {
   const TRACKS = [
     { id: 'jingle-bells', title: 'Jingle Bells', type: 'mp3', src: 'assets/audio/jingle-bells.mp3' },
-    { id: 'jingle-bells-calm', title: 'Jingle Bells (Calm)', type: 'mp3', src: 'assets/audio/jingle-bells-calm.mp3' },
     { id: 'we-wish', title: 'We Wish You a Merry Christmas', type: 'mp3', src: 'assets/audio/we-wish-you-a-merry-christmas.mp3' },
     { id: 'deck-the-halls', title: 'Deck the Halls', type: 'mp3', src: 'assets/audio/deck-the-halls.mp3' },
     { id: 'up-on-a-housetop', title: 'Up on a Housetop', type: 'mp3', src: 'assets/audio/up-on-a-housetop.mp3' },
@@ -171,7 +170,7 @@
         bgmAudioEl.src = currentTrack.src;
         bgmAudioEl.setAttribute('data-track-id', currentTrack.id);
       }
-      bgmAudioEl.volume = useDirectVolumeDucking ? (isDucked ? 0.2 : 0.6) : 0.55;
+      bgmAudioEl.volume = useDirectVolumeDucking && isDucked ? 0.25 : 1.0;
       const playPromise = bgmAudioEl.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch((err) => {
@@ -290,7 +289,7 @@
       masterGain.gain.setTargetAtTime(0.25, audioCtx.currentTime, 0.05);
     }
     if (useDirectVolumeDucking) {
-      bgmAudioEl.volume = 0.2;
+      bgmAudioEl.volume = 0.25;
     }
   };
 
@@ -300,7 +299,7 @@
       masterGain.gain.setTargetAtTime(1.0, audioCtx.currentTime, 0.15);
     }
     if (useDirectVolumeDucking) {
-      bgmAudioEl.volume = 0.6;
+      bgmAudioEl.volume = 1.0;
     }
   };
 
