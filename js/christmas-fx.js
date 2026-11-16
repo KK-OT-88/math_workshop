@@ -48,8 +48,21 @@
     }
   }
 
+  function toggleSnow() {
+    if (prefersReducedMotion()) return false;
+    const next = !isSnowEnabled();
+    localStorage.setItem('snow_enabled', String(next));
+    syncSnowUI();
+    window.dispatchEvent(new CustomEvent('snow:statechange', { detail: { enabled: next } }));
+    return next;
+  }
+
   function initChristmasFX() {
     if (document.getElementById('christmas-snow-layer')) return;
+
+    if (localStorage.getItem('snow_enabled') === null) {
+      localStorage.setItem('snow_enabled', 'true');
+    }
 
     snowLayer = document.createElement('div');
     snowLayer.id = 'christmas-snow-layer';
@@ -58,25 +71,30 @@
     buildSnowflakes();
     document.body.prepend(snowLayer);
 
-    toggleBtn = document.createElement('button');
-    toggleBtn.type = 'button';
-    toggleBtn.className = 'snow-toggle';
-    toggleBtn.setAttribute('aria-label', 'เปิดหรือปิดหิมะตก');
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (prefersReducedMotion()) return;
-      const next = !isSnowEnabled();
-      localStorage.setItem('snow_enabled', String(next));
-      syncSnowUI();
-    });
-    document.body.appendChild(toggleBtn);
+    const hasFloatingControls =
+      Boolean(document.querySelector('script[src*="floating-controls.js"]')) ||
+      typeof window.FloatingControls !== 'undefined';
 
-    if (localStorage.getItem('snow_enabled') === null) {
-      localStorage.setItem('snow_enabled', 'true');
+    if (!hasFloatingControls) {
+      toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'snow-toggle';
+      toggleBtn.setAttribute('aria-label', 'เปิดหรือปิดหิมะตก');
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSnow();
+      });
+      document.body.appendChild(toggleBtn);
     }
 
     syncSnowUI();
   }
+
+  window.SnowControl = {
+    isEnabled: isSnowEnabled,
+    isReducedMotion: prefersReducedMotion,
+    toggle: toggleSnow
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initChristmasFX);

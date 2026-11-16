@@ -667,6 +667,19 @@
       });
   }
 
+  function toggleTts() {
+    const next = !isTtsEnabled();
+    localStorage.setItem('tts_enabled', String(next));
+    updateTtsToggleUI();
+    window.dispatchEvent(new CustomEvent('tts:statechange', { detail: { enabled: next } }));
+    if (!next) {
+      cancelAllAudio();
+    } else {
+      playThaiTTS('เปิดเสียงอ่านแล้วค่ะ');
+    }
+    return next;
+  }
+
   function updateTtsToggleUI() {
     if (!ttsToggleBtn) return;
     const enabled = isTtsEnabled();
@@ -676,11 +689,15 @@
   }
 
   function createTtsWidget() {
-    if (document.querySelector('.tts-toggle')) return;
-
     if (localStorage.getItem('tts_enabled') === null) {
       localStorage.setItem('tts_enabled', 'true');
     }
+
+    const hasFloatingControls =
+      Boolean(document.querySelector('script[src*="floating-controls.js"]')) ||
+      typeof window.FloatingControls !== 'undefined';
+
+    if (hasFloatingControls || document.querySelector('.tts-toggle')) return;
 
     ttsToggleBtn = document.createElement('button');
     ttsToggleBtn.type = 'button';
@@ -690,14 +707,7 @@
 
     ttsToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const next = !isTtsEnabled();
-      localStorage.setItem('tts_enabled', String(next));
-      updateTtsToggleUI();
-      if (!next) {
-        cancelAllAudio();
-      } else {
-        playThaiTTS('เปิดเสียงอ่านแล้วค่ะ');
-      }
+      toggleTts();
     });
 
     document.body.appendChild(ttsToggleBtn);
@@ -724,6 +734,10 @@
   window.stopTTS = cancelAllAudio;
   window.setBgmDuckingCallbacks = setBgmDuckingCallbacks;
   window.isTtsEnabled = isTtsEnabled;
+  window.TTSControl = {
+    isEnabled: isTtsEnabled,
+    toggle: toggleTts
+  };
 
   Object.defineProperty(window, 'isTtsSpeaking', {
     get: function () {

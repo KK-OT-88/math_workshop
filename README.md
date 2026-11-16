@@ -20,6 +20,12 @@ npm start
 
 > **หมายเหตุการใช้งานแบบ Offline / `file://`**: สามารถเปิดไฟล์ HTML โดยตรงหรือใช้ `python3 -m http.server` ได้เช่นกัน แต่เสียงอ่าน TTS จะสลับไปใช้ Web Speech API (`th-TH`) ของเครื่องแทน Google TTS proxy อัตโนมัติ
 
+## ระบบเพลง BGM และแผงควบคุม Liquid Glass (iOS 26)
+
+- **เพลง BGM 6 แทร็ก (`bgm.js` + `assets/audio/`)**: รวมเพลงบรรเลงคริสต์มาส 5 เพลงจาก Kevin MacLeod (CC BY 4.0, ดูเครดิตใน [assets/audio/CREDITS.md](assets/audio/CREDITS.md)) พร้อมทำนองสังเคราะห์เดิม สุ่มเปลี่ยนเพลงที่ไม่ซ้ำเดิมอัตโนมัติเมื่อเปลี่ยนหน้า/หัวข้อ หรือสลับตอนในใบงานรวม และลดเสียงเพลงอัตโนมัติเมื่อพูด (iOS Safari compatible)
+- **เอฟเฟกต์หิมะ (`js/christmas-fx.js`)**: เกล็ดหิมะตกหน้าสุด (`z-index: 9999; pointer-events: none;`) ไม่บังการแตะหรือเขียนด้วย Apple Pencil
+- **แผงควบคุมแบบ iOS 26 Liquid Glass (`js/floating-controls.js`)**: รวมปุ่มควบคุม (ดนตรี, สุ่มเพลง, เสียงอ่าน, หิมะ) ไว้ใน Bubble เดียว ลากไปเกาะขอบ บน-ล่าง-ซ้าย-ขวา ได้ กดเพื่อเปิดแผงควบคุมและกดปุ่ม `✕` เพื่อย่อกลับ
+
 ## ระบบอ่านออกเสียง (Hybrid TTS)
 
 - **Server Proxy**: `server.js` + `tts-handler.js` (และ `netlify/functions/tts.js` สำหรับ deploy บน Netlify) ให้บริการ `/api/tts?q=...&tl=th` (จำกัด `q <= 200` ตัวอักษร และรับเฉพาะ `tl` = `th` หรือ `en`)

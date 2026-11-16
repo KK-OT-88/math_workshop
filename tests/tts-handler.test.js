@@ -63,12 +63,28 @@ test('all HTML asset/script/link references exist and SVGs are < 3 KB', () => {
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(path.join(rootDir, file), 'utf8');
+    assert.ok(html.includes('js/floating-controls.js'), `${file} must load js/floating-controls.js`);
     const refs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
     for (const ref of refs) {
       if (/^(?:https?:|data:|#)/.test(ref)) continue;
       const target = path.join(rootDir, ref);
       assert.ok(fs.existsSync(target), `Missing target "${ref}" referenced in ${file}`);
     }
+  }
+
+  const audioDir = path.join(rootDir, 'assets', 'audio');
+  const expectedMp3s = [
+    'jingle-bells.mp3',
+    'jingle-bells-calm.mp3',
+    'we-wish-you-a-merry-christmas.mp3',
+    'deck-the-halls.mp3',
+    'up-on-a-housetop.mp3'
+  ];
+  for (const mp3 of expectedMp3s) {
+    const mp3Path = path.join(audioDir, mp3);
+    assert.ok(fs.existsSync(mp3Path), `Missing audio track ${mp3}`);
+    const stat = fs.statSync(mp3Path);
+    assert.ok(stat.size > 50000, `${mp3} size ${stat.size} too small`);
   }
 
   const svgDir = path.join(rootDir, 'assets', 'christmas');

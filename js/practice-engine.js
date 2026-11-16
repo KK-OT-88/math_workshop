@@ -61,6 +61,7 @@
   function renderSection(topic, index) {
     const altClass = index % 2 === 1 ? ' alt-green' : '';
     const st = topic.static;
+    const headerTts = st.headerTts || topic.title;
     let bodyHtml = '';
 
     if (topic.key === 'multiplication') {
@@ -126,7 +127,7 @@
       <section class="section-card${altClass}" id="sec-${escapeHtml(topic.key)}">
         <h2 class="section-title">
           <span>${escapeHtml(topic.title)}</span>
-          <button type="button" class="tts-inline-btn" data-tts="${escapeHtml(topic.title)}" aria-label="ฟังชื่อตอน">🔊 ฟังหัวข้อ</button>
+          <button type="button" class="tts-inline-btn" data-tts="${escapeHtml(headerTts)}" aria-label="ฟังหัวข้อ">🔊 ฟังหัวข้อ</button>
         </h2>
         ${bodyHtml}
       </section>
@@ -241,7 +242,21 @@
       window.print();
     });
 
+    const notifySectionInteraction = (target) => {
+      const sectionEl = target && typeof target.closest === 'function' ? target.closest('.section-card[id^="sec-"]') : null;
+      if (!sectionEl) return;
+      const secKey = sectionEl.id.replace(/^sec-/, '');
+      if (window.BGMControl && typeof window.BGMControl.onSectionChange === 'function') {
+        window.BGMControl.onSectionChange(secKey);
+      }
+    };
+
+    root.addEventListener('focusin', (e) => {
+      notifySectionInteraction(e.target);
+    });
+
     root.addEventListener('click', (e) => {
+      notifySectionInteraction(e.target);
       const btn = e.target.closest('.tts-inline-btn[data-tts]');
       if (btn) {
         speakText(btn.getAttribute('data-tts'));

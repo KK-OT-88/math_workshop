@@ -311,6 +311,9 @@
       if (typeof window.getSharedAudioContext === 'function') {
         window.getSharedAudioContext();
       }
+      if (window.BGMControl && typeof window.BGMControl.unlockAndResume === 'function') {
+        window.BGMControl.unlockAndResume();
+      }
       gameStarted = true;
       startOverlay.classList.remove('show');
       loadQuestion(true);

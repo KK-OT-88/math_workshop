@@ -132,4 +132,18 @@ test('static worksheets have all 26 inputs (7 + 4 + 10 + 5) and valid TTS', () =
   assert.equal(mulCount, 10);
   assert.equal(wpCount, 5);
   assert.equal(numCount + picCount + mulCount + wpCount, 26);
+
+  assert.ok(
+    data.pictograph.static.headerTts.includes(
+      'พิจารณารูปภาพแสดงจำนวนของขวัญคริสต์มาสที่ใบบัวสะสมได้ แล้วตอบคำถาม (กำหนดให้ รูปภาพ 1 รูป แทนจำนวน 1 ชิ้น)'
+    ),
+    'pictograph.static.headerTts must include full chart instruction'
+  );
+  assertValidTts(data.pictograph.static.headerTts, 'pictograph.static.headerTts');
+
+  assert.ok(
+    data.multiplication.static.headerTts.includes('เติมผลลัพธ์ของการคูณลงในช่องว่างให้ถูกต้อง (10 คะแนน)'),
+    'multiplication.static.headerTts must include multiplication instruction'
+  );
+  assertValidTts(data.multiplication.static.headerTts, 'multiplication.static.headerTts');
 });
